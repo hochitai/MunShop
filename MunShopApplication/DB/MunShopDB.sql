@@ -6,7 +6,7 @@ GO
 
 CREATE TABLE roles (
   [id] int NOT NULL PRIMARY KEY,
-  [name] nvarchar(255) NOT NULL,
+  [name] nvarchar(50) NOT NULL,
   [created_at] DATETIME2(3) CONSTRAINT DF_Roles_Created DEFAULT (SYSDATETIME()),
   [updated_at] DATETIME2(3)
 )
@@ -14,10 +14,10 @@ GO
 
 CREATE TABLE users (
   [id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
-  [username] nvarchar(255) NOT NULL,
+  [username] nvarchar(100) NOT NULL,
   [password] nvarchar(255) NOT NULL,
   [salt] nvarchar(255) NOT NULL,
-  [email] nvarchar(255) NOT NULL,
+  [email] nvarchar(100) NOT NULL,
   [role_id] int NOT NULL,
   [created_at] DATETIME2(3) CONSTRAINT DF_Users_Created DEFAULT (SYSDATETIME()),
   [updated_at] DATETIME2(3)
@@ -37,7 +37,8 @@ GO
 CREATE TABLE products (
   [id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
   [name] nvarchar(255) NOT NULL,
-  [price] integer NOT NULL,
+  [price] float NOT NULL,
+  [description] nvarchar(255) NOT NULL,
   [category_id] UNIQUEIDENTIFIER,
   [created_at] DATETIME2(3) CONSTRAINT DF_Products_Created DEFAULT (SYSDATETIME()),
   [updated_at] DATETIME2(3)
@@ -46,7 +47,7 @@ GO
 
 CREATE TABLE categories (
   [id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
-  [name] nvarchar(255) NOT NULL,
+  [name] nvarchar(100) NOT NULL,
   [created_at] DATETIME2(3) CONSTRAINT DF_Categories_Created DEFAULT (SYSDATETIME()),
   [updated_at] DATETIME2(3)
 )
@@ -56,7 +57,7 @@ CREATE TABLE orderItems (
   [id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
   [order_id] UNIQUEIDENTIFIER NOT NULL,
   [product_id] UNIQUEIDENTIFIER NOT NULL,
-  [price] integer NOT NULL,
+  [price] float NOT NULL,
   [quantity] integer NOT NULL,
   [created_at] DATETIME2(3) CONSTRAINT DF_OrderItems_Created DEFAULT (SYSDATETIME()),
   [updated_at] DATETIME2(3)

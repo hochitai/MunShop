@@ -12,7 +12,6 @@
     <Folder Include="Commons\" />
     <Folder Include="Helpers\" />
     <Folder Include="DB\" />
-    <Folder Include="Entities\" />
     <Folder Include="DTOs\" />
     <Folder Include="Services\" />
     <Folder Include="Repository\" />
