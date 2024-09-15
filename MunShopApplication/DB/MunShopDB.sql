@@ -6,7 +6,7 @@ GO
 
 CREATE TABLE roles (
   [id] int NOT NULL PRIMARY KEY,
-  [name] nvarchar(255),
+  [name] nvarchar(255) NOT NULL,
   [created_at] DATETIME2(3) CONSTRAINT DF_Roles_Created DEFAULT (SYSDATETIME()),
   [updated_at] DATETIME2(3)
 )
@@ -14,11 +14,11 @@ GO
 
 CREATE TABLE users (
   [id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
-  [username] nvarchar(255),
-  [password] nvarchar(255),
-  [salt] nvarchar(255),
-  [email] nvarchar(255),
-  [role_id] int,
+  [username] nvarchar(255) NOT NULL,
+  [password] nvarchar(255) NOT NULL,
+  [salt] nvarchar(255) NOT NULL,
+  [email] nvarchar(255) NOT NULL,
+  [role_id] int NOT NULL,
   [created_at] DATETIME2(3) CONSTRAINT DF_Users_Created DEFAULT (SYSDATETIME()),
   [updated_at] DATETIME2(3)
 )
@@ -26,8 +26,9 @@ GO
 
 CREATE TABLE orders (
   [id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
-  [total] integer,
-  [user_id] UNIQUEIDENTIFIER,
+  [total] integer NOT NULL,
+  [user_id] UNIQUEIDENTIFIER NOT NULL,
+  [is_canceled] bit NOT NULL,
   [created_at] DATETIME2(3) CONSTRAINT DF_Orders_Created DEFAULT (SYSDATETIME()),
   [updated_at] DATETIME2(3)
 )
@@ -35,8 +36,8 @@ GO
 
 CREATE TABLE products (
   [id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
-  [name] nvarchar(255),
-  [price] integer,
+  [name] nvarchar(255) NOT NULL,
+  [price] integer NOT NULL,
   [category_id] UNIQUEIDENTIFIER,
   [created_at] DATETIME2(3) CONSTRAINT DF_Products_Created DEFAULT (SYSDATETIME()),
   [updated_at] DATETIME2(3)
@@ -45,7 +46,7 @@ GO
 
 CREATE TABLE categories (
   [id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
-  [name] nvarchar(255),
+  [name] nvarchar(255) NOT NULL,
   [created_at] DATETIME2(3) CONSTRAINT DF_Categories_Created DEFAULT (SYSDATETIME()),
   [updated_at] DATETIME2(3)
 )
@@ -53,10 +54,10 @@ GO
 
 CREATE TABLE orderItems (
   [id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
-  [order_id] UNIQUEIDENTIFIER,
-  [product_id] UNIQUEIDENTIFIER,
-  [price] integer,
-  [quantity] integer,
+  [order_id] UNIQUEIDENTIFIER NOT NULL,
+  [product_id] UNIQUEIDENTIFIER NOT NULL,
+  [price] integer NOT NULL,
+  [quantity] integer NOT NULL,
   [created_at] DATETIME2(3) CONSTRAINT DF_OrderItems_Created DEFAULT (SYSDATETIME()),
   [updated_at] DATETIME2(3)
 )
