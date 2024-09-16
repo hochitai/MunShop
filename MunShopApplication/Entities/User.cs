@@ -9,7 +9,7 @@
         public string Password { get; set; }
         public string Salt { get; set; }
         public string RoleId { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime LastUpdatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? LastUpdatedAt { get; set; }
     }
 }
