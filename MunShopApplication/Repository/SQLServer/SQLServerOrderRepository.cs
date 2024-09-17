@@ -64,7 +64,7 @@ namespace MunShopApplication.Repository.SQLServer
                     return null;
                 }
             }
-            catch (Exception ex) 
+            catch
             {
                 if (transaction != null) 
                 { 

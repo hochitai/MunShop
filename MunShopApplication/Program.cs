@@ -16,13 +16,18 @@ namespace MunShopApplication
             // Add services to the container.
             builder.Services.AddTransient<SqlConnection>(sp =>
             {
-                var connectionString = builder.Configuration.GetConnectionString("MunShop");
+                var connectionString = builder.Configuration.GetConnectionString("ShopDatabase");
                 return new SqlConnection(connectionString);
             });
+
+            // Register Category Service
+            builder.Services.AddScoped<CategoryService>();
+            builder.Services.AddScoped<SQLServerCategoryRepository>();
 
             // Register Order Service
             builder.Services.AddScoped<OrderService>();
             builder.Services.AddScoped<SQLServerOrderRepository>();
+            
 
             builder.Services.AddControllers();
 

@@ -12,7 +12,7 @@ namespace MunShopApplication.Services
             _orderRepository = orderRepository;
         }
 
-        public async Task<Order?> Create(Order order)
+        public async Task<Order?> Add(Order order)
         {
             order.Id = Guid.NewGuid();
 
