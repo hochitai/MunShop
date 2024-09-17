@@ -18,9 +18,9 @@ namespace MunShopApplication.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Order order)
+        public async Task<IActionResult> Add([FromBody] Order order)
         {
-            var result = await _orderService.Create(order);
+            var result = await _orderService.Add(order);
 
             if (result == null)
             {

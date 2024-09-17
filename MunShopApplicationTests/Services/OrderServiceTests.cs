@@ -21,7 +21,7 @@ namespace MunShopApplication.Services.Tests
     {
 
         private OrdersController _ordersController;
-        private Mock<OrderService> _mockOrderService;
+        private Mock<CategoryService> _mockOrderService;
         private Mock<SQLServerOrderRepository> _mockOrderRepository;
 
         [TestInitialize]
@@ -29,7 +29,7 @@ namespace MunShopApplication.Services.Tests
         {
             var sqlConnection = new SqlConnection("Server=.;Database=MunShop;Trusted_Connection=True;TrustServerCertificate=True;");
             _mockOrderRepository = new Mock<SQLServerOrderRepository>(sqlConnection);
-            _mockOrderService = Substitute.For<OrderService>(_mockOrderRepository);
+            _mockOrderService = Substitute.For<CategoryService>(_mockOrderRepository);
             _ordersController = new OrdersController(_mockOrderService.Object);
         }
 
