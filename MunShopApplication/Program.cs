@@ -24,6 +24,10 @@ namespace MunShopApplication
             builder.Services.AddScoped<CategoryService>();
             builder.Services.AddScoped<SQLServerCategoryRepository>();
 
+            // Register Product Service
+            builder.Services.AddScoped<ProductService>();
+            builder.Services.AddScoped<SQLServerProductRepository>();
+
             // Register Order Service
             builder.Services.AddScoped<OrderService>();
             builder.Services.AddScoped<SQLServerOrderRepository>();
