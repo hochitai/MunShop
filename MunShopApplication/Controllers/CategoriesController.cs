@@ -42,7 +42,7 @@ namespace MunShopApplication.Controllers
         public async Task<IActionResult> Update([FromRoute] Guid categoryId, [FromBody] Category category)
         {
             category.Id = categoryId;
-            var result = await _categoryService.Add(category);
+            var result = await _categoryService.Update(category);
             if (result == null)
             {
                 return BadRequest("Can not update Categories");
