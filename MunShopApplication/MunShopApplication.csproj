@@ -8,9 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Configs\" />
-    <Folder Include="Commons\" />
-    <Folder Include="DTOs\" />
-    <Folder Include="Helpers\" />
     <Folder Include="DB\" />
   </ItemGroup>
 
