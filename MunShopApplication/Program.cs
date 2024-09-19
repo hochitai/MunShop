@@ -1,9 +1,13 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MunShopApplication.Repository;
 using MunShopApplication.Repository.SQLServer;
 using MunShopApplication.Services;
+using MunShopApplication.Configs;
+using System.Text;
 
 namespace MunShopApplication
 {
@@ -48,6 +52,26 @@ namespace MunShopApplication
                     }
                 });
             });
+
+            //JWT Authentication
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                    ValidAudience = builder.Configuration["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+                };
+            });
+
+            //bind object model from configuration
+            JWTConfig jwtConfig = builder.Configuration.GetSection("jwt").Get<JWTConfig>();
+
+            //add it to services
+            builder.Services.AddSingleton(jwtConfig);
 
             builder.Services.AddRouting(options => options.LowercaseUrls = true);
 

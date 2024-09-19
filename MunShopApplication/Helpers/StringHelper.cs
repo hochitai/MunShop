@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
 
-namespace DirectoryPermissionManagement.Helpers
+namespace MunShopApplication.Helpers
 {
     public class StringHelper
     {
