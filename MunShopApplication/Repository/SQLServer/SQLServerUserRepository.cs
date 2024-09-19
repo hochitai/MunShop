@@ -13,7 +13,7 @@ namespace MunShopApplication.Repository.SQLServer
         private const string UPDATE_COMMAND = "UPDATE users SET name = @Name, email = @Email WHERE Id = @UserId";
         private const string SELECT = "SELECT ";
         private const string FIND_BY_ID_QUERY = "SELECT id, name, email, role_id FROM users WHERE id = @UserId";
-        private const string FIND_BY_NAME_QUERY = "SELECT id, name, username, password, email, role_id FROM users WHERE username = @Username";
+        private const string FIND_BY_USERNAME_QUERY = "SELECT id, name, username, password, salt, email, role_id FROM users WHERE username = @Username";
 
         private readonly SqlConnection _connection;
         
@@ -93,7 +93,7 @@ namespace MunShopApplication.Repository.SQLServer
                 _connection.Open();
                 var cmd = _connection.CreateCommand();
 
-                cmd.CommandText = FIND_BY_NAME_QUERY;
+                cmd.CommandText = FIND_BY_USERNAME_QUERY;
 
                 cmd.Parameters.Add(new SqlParameter("@Username", SqlDbType.NVarChar, 100)).Value = username;
 
@@ -108,8 +108,9 @@ namespace MunShopApplication.Repository.SQLServer
                         Name = reader.GetString(1),
                         Username = reader.GetString(2),
                         Password = reader.GetString(3),
-                        Email = reader.GetString(4),
-                        RoleId = reader.GetInt32(5),
+                        Salt = reader.GetString(4),
+                        Email = reader.GetString(5),
+                        RoleId = reader.GetInt32(6),
                     };
                 }
                 else
