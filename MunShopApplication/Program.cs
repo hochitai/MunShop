@@ -28,6 +28,10 @@ namespace MunShopApplication
             builder.Services.AddScoped<ProductService>();
             builder.Services.AddScoped<SQLServerProductRepository>();
 
+            // Register User Service
+            builder.Services.AddScoped<UserService>();
+            builder.Services.AddScoped<SQLServerUserRepository>();
+
             // Register Order Service
             builder.Services.AddScoped<OrderService>();
             builder.Services.AddScoped<SQLServerOrderRepository>();

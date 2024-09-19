@@ -14,6 +14,7 @@ GO
 
 CREATE TABLE users (
   [id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+  [name] nvarchar(100) NOT NULL,
   [username] nvarchar(100) NOT NULL,
   [password] nvarchar(255) NOT NULL,
   [salt] nvarchar(255) NOT NULL,
