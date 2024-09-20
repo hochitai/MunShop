@@ -7,8 +7,8 @@ namespace MunShopApplication.Repository.SQLServer
 {
     public class SQLServerOrderRepository : IOrderRepository
     {
-        private const string INSERT_COMMAND = "INSERT INTO orders VALUES (@OrderId, @UserId, @Total)";
-        private const string INSERT_ITEM_COMMAND = "INSERT INTO orderItems VALUES (@OrderItemId, @OrderId, @ProductId, @Price, @Quantity)";
+        private const string INSERT_COMMAND = "INSERT INTO orders(Id,user_id, total) VALUES (@OrderId, @UserId, @Total)";
+        private const string INSERT_ITEM_COMMAND = "INSERT INTO orderItems(id, order_id, product_id, price, quantity) VALUES (@OrderItemId, @OrderId, @ProductId, @Price, @Quantity)";
 
         private readonly SqlConnection _connection;
         public SQLServerOrderRepository(SqlConnection connection)
@@ -17,14 +17,15 @@ namespace MunShopApplication.Repository.SQLServer
         }
         public async Task<Order?> Add(Order order)
         {
-            DbTransaction? transaction = null;
+            SqlTransaction? transaction = null;
             try
             {
                 await _connection.OpenAsync();
-                transaction = await _connection.BeginTransactionAsync();
+                transaction = _connection.BeginTransaction();
                 
                 var cmd = _connection.CreateCommand();
                 cmd.CommandText = INSERT_COMMAND;
+                cmd.Transaction = transaction;
 
                 cmd.Parameters.Add(new SqlParameter("@OrderId", SqlDbType.UniqueIdentifier)).Value = order.Id;
                 cmd.Parameters.Add(new SqlParameter("@UserId", SqlDbType.UniqueIdentifier)).Value = order.UserId;

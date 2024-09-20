@@ -24,7 +24,7 @@ namespace MunShopApplication.Controllers
 
             if (result == null)
             {
-                return BadRequest("Can not create order");
+                return BadRequest("Can not insert order");
             }
 
             return Ok(result);
