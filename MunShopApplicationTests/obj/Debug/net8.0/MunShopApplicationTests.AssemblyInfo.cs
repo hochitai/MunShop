@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MunShopApplicationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be6a964d71a5104da5c2d5ca1c3d2185ef503da8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e26389b806ecc30fa5874cd01882154e1c3af2e")]
 [assembly: System.Reflection.AssemblyProductAttribute("MunShopApplicationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MunShopApplicationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
