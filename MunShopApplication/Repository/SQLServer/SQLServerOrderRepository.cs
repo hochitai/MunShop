@@ -9,6 +9,9 @@ namespace MunShopApplication.Repository.SQLServer
     {
         private const string INSERT_COMMAND = "INSERT INTO orders(Id,user_id, total) VALUES (@OrderId, @UserId, @Total)";
         private const string INSERT_ITEM_COMMAND = "INSERT INTO orderItems(id, order_id, product_id, price, quantity) VALUES (@OrderItemId, @OrderId, @ProductId, @Price, @Quantity)";
+        private const string CANCEL_ORDER_COMMAND = "UPDATE orderS SET is_canceled = 1 WHERE id = @OrderId";
+        private const string SELECT = "SELECT";
+        private const string IS_EXISTED_ORDER_QUERY = " id FROM orders WHERE id = @OrderId";
 
         private readonly SqlConnection _connection;
         public SQLServerOrderRepository(SqlConnection connection)
@@ -72,6 +75,51 @@ namespace MunShopApplication.Repository.SQLServer
                     await transaction.CommitAsync();
                 }
                 return null;
+            }
+            finally
+            {
+                _connection.Close();
+            }
+        }
+        public async Task<bool> Cancel(Guid orderId)
+        {
+            try
+            {
+                await _connection.OpenAsync();
+
+                var cmd = _connection.CreateCommand();
+                cmd.CommandText = CANCEL_ORDER_COMMAND;
+
+                cmd.Parameters.Add(new SqlParameter("@OrderId", SqlDbType.UniqueIdentifier)).Value = orderId;
+
+                return await cmd.ExecuteNonQueryAsync() > 0;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                _connection.Close();
+            }
+        }
+
+        public async Task<bool> isExistedOrder(Guid orderId)
+        {
+            try
+            {
+                await _connection.OpenAsync();
+
+                var cmd = _connection.CreateCommand();
+                cmd.CommandText = SELECT + IS_EXISTED_ORDER_QUERY;
+
+                cmd.Parameters.Add(new SqlParameter("@OrderId", SqlDbType.UniqueIdentifier)).Value = orderId;
+
+                return await cmd.ExecuteScalarAsync() != null;
+            }
+            catch
+            {
+                return false;
             }
             finally
             {
