@@ -29,5 +29,19 @@ namespace MunShopApplication.Controllers
 
             return Ok(result);
         }
+
+        [HttpPatch("{orderId}")]
+        public async Task<IActionResult> Cancel([FromRoute] Guid orderId)
+        {
+            var result = await _orderService.Cancel(orderId);
+
+            if (result == false)
+            {
+                return BadRequest("Can not cancel order");
+            }
+
+            return NoContent();
+        }
+
     }
 }

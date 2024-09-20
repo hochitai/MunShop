@@ -24,6 +24,17 @@ namespace MunShopApplication.Services
             var result = await _orderRepository.Add(order);
 
             return result;
-        } 
+        }
+        public async Task<bool> Cancel(Guid orderId)
+        {
+            if (! await _orderRepository.isExistedOrder(orderId))
+            {
+                return false;
+            }
+               
+            var result = await _orderRepository.Cancel(orderId);
+
+            return result;
+        }
     }
 }
