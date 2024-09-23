@@ -1,4 +1,5 @@
 ﻿using MunShopApplication.Entities;
+using MunShopApplication.Repository;
 using MunShopApplication.Repository.SQLServer;
 
 namespace MunShopApplication.Services
@@ -59,6 +60,34 @@ namespace MunShopApplication.Services
         {
             return await _productRepository.GetAll();
         }
+
+        public async Task<List<Product>?> Find(int skip, int take, float minPrice, float maxPrice, string name, Guid categoryId)
+        {
+            var creterias = new ProductFindCreterias()
+            {
+                Skip = skip,
+                Take = take,
+            };
+            if (minPrice > 0)
+            {
+                creterias.MinPrice = minPrice;
+            }
+            if(maxPrice > 0)
+            {
+                creterias.MaxPrice = maxPrice;
+            }
+            if (!string.IsNullOrEmpty(name))
+            {
+                creterias.Name = name;
+            }
+            if (categoryId != Guid.Empty && categoryId != null )
+            {
+                creterias.CategoryId = categoryId;
+            }
+
+            return await _productRepository.Find(creterias);
+        }
+
         private static bool ValidationProduct(Product product)
         {
             if (product.Id == null || product.Id == Guid.Empty)
