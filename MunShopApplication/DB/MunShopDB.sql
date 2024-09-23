@@ -27,7 +27,7 @@ GO
 
 CREATE TABLE orders (
   [id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
-  [total] integer NOT NULL,
+  [total] float NOT NULL,
   [user_id] UNIQUEIDENTIFIER NOT NULL,
   [is_canceled] bit NOT NULL DEFAULT 0,
   [created_at] DATETIME2(3) CONSTRAINT DF_Orders_Created DEFAULT (SYSDATETIME()),
