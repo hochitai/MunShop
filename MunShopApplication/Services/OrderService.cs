@@ -45,17 +45,15 @@ namespace MunShopApplication.Services
             return result;
         }
 
-        public async Task<List<Order>?> Find(int skip, int take)
+        public async Task<List<Order>?> Find(int skip, int take, DateTime beginDate, DateTime endDate)
         {
-            var creterias = new PageCreterias();
-            if (skip > 0) 
-            { 
-                creterias.Skip = skip;
-            }
-            if (take > 0)
+            var creterias = new OrderFindCreterias()
             {
-                creterias.Take = take;
-            }
+                Skip = skip,
+                Take = take,
+                BeginDate = beginDate,
+                EndDate = endDate
+            };
 
             var result = await _orderRepository.Find(creterias);
 
