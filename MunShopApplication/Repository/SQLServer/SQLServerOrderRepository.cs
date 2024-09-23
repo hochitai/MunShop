@@ -1,8 +1,11 @@
 ﻿using Azure.Core;
 using Microsoft.Data.SqlClient;
+using MunShopApplication.Controllers;
 using MunShopApplication.Entities;
 using System.Data;
 using System.Data.Common;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace MunShopApplication.Repository.SQLServer
 {
@@ -11,10 +14,11 @@ namespace MunShopApplication.Repository.SQLServer
         private const string INSERT_COMMAND = "INSERT INTO orders(Id,user_id, total) VALUES (@OrderId, @UserId, @Total)";
         private const string INSERT_ITEM_COMMAND = "INSERT INTO orderItems(id, order_id, product_id, price, quantity) VALUES (@OrderItemId, @OrderId, @ProductId, @Price, @Quantity)";
         private const string CANCEL_ORDER_COMMAND = "UPDATE orderS SET is_canceled = 1 WHERE id = @OrderId";
-        private const string SELECT = "SELECT";
-        private const string IS_EXISTED_ORDER_QUERY = " id FROM orders WHERE id = @OrderId";
-        private const string FIND_BY_ID_QUERY = " id, user_id, total, created_at FROM orders WHERE id = @OrderId AND is_canceled = 0";
-        private const string FIND_ITEMS_QUERY = " id, product_id, price, quantity FROM orderItems WHERE order_id = @OrderId";
+        private const string SELECT = "SELECT ";
+        private const string IS_EXISTED_ORDER_QUERY = "id FROM orders WHERE id = @OrderId";
+        private const string FIND_ALL = "id, user_id, total, created_at FROM orders WHERE (1 = 1)";
+        private const string FIND_BY_ID_QUERY = "id, user_id, total, created_at FROM orders WHERE id = @OrderId AND is_canceled = 0";
+        private const string FIND_ITEMS_QUERY = "id, product_id, price, quantity FROM orderItems WHERE order_id = @OrderId";
 
         private readonly SqlConnection _connection;
         public SQLServerOrderRepository(SqlConnection connection)
@@ -144,7 +148,7 @@ namespace MunShopApplication.Repository.SQLServer
                 var reader = await cmd.ExecuteReaderAsync();
                 var order = new Order();
 
-                if (order != null && reader.Read())
+                if (reader != null && reader.Read())
                 {
                     order.Id = reader.GetGuid(0);
                     order.UserId = reader.GetGuid(1);
@@ -173,6 +177,86 @@ namespace MunShopApplication.Repository.SQLServer
                 }
 
                 return order;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                _connection.Close();
+            }
+        }
+
+        public async Task<List<Order>?> Find(PageCreterias creterias)
+        {
+            try
+            {
+                await _connection.OpenAsync();
+
+                var cmd = _connection.CreateCommand();
+
+                var sql = new StringBuilder(SELECT);
+
+                sql.Append(FIND_ALL);
+
+                if (creterias.Skip > 0)
+                {
+                    sql.Append(" ORDER BY created_at DESC");
+                    sql.Append(" OFFSET ");
+                    sql.Append(creterias.Skip);
+                    sql.Append(" ROWS");
+                }
+
+                if (creterias.Take > 0)
+                {
+                    sql.Append(" FETCH NEXT ");
+                    sql.Append(creterias.Take);
+                    sql.Append(" ROW ONLY");
+                }
+
+                cmd.CommandText = sql.ToString();
+
+                var reader = await cmd.ExecuteReaderAsync();
+                var orders = new List<Order>();
+
+                while (reader != null && reader.Read())
+                {
+                    var order =  new Order();
+                    order.Id = reader.GetGuid(0);
+                    order.UserId = reader.GetGuid(1);
+                    order.Total = (float)reader.GetDouble(2);
+                    order.CreatedAt = reader.GetDateTime(3);
+                    orders.Add(order);    
+                }
+
+                reader.Close();
+
+                foreach (var order in orders)
+                {
+                    cmd.CommandText = SELECT + FIND_ITEMS_QUERY;
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.Add(new SqlParameter("@OrderId", SqlDbType.UniqueIdentifier)).Value = order.Id;
+
+                    reader = await cmd.ExecuteReaderAsync();
+
+                    while (reader != null && reader.Read())
+                    {
+                        var item = new OrderItem()
+                        {
+                            Id = reader.GetGuid(0),
+                            ProductId = reader.GetGuid(1),
+                            Price = (float) reader.GetDouble(2),
+                            Quantity = reader.GetInt32(3),
+                        };
+
+                        order.Items.Add(item);
+                    }
+                    reader.Close();
+
+                }
+
+                return orders;
             }
             catch
             {

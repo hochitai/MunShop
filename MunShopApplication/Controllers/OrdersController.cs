@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using MunShopApplication.Entities;
+using MunShopApplication.Repository;
 using MunShopApplication.Services;
 
 namespace MunShopApplication.Controllers
@@ -47,6 +48,20 @@ namespace MunShopApplication.Controllers
         public async Task<IActionResult> FindById([FromRoute] Guid orderId)
         {
             var result = await _orderService.FindByID(orderId);
+
+            if (result == null)
+            {
+                return BadRequest("Can not get order");
+            }
+
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Find([FromQuery] int skip, [FromQuery] int take)
+        {
+
+            var result = await _orderService.Find(skip, take);
 
             if (result == null)
             {

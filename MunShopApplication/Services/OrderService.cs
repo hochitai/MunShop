@@ -1,4 +1,5 @@
 ﻿using MunShopApplication.Entities;
+using MunShopApplication.Repository;
 using MunShopApplication.Repository.SQLServer;
 
 namespace MunShopApplication.Services
@@ -40,6 +41,23 @@ namespace MunShopApplication.Services
         public async Task<Order?> FindByID(Guid orderId)
         {
             var result = await _orderRepository.FindById(orderId);
+
+            return result;
+        }
+
+        public async Task<List<Order>?> Find(int skip, int take)
+        {
+            var creterias = new PageCreterias();
+            if (skip > 0) 
+            { 
+                creterias.Skip = skip;
+            }
+            if (take > 0)
+            {
+                creterias.Take = take;
+            }
+
+            var result = await _orderRepository.Find(creterias);
 
             return result;
         }
