@@ -36,5 +36,12 @@ namespace MunShopApplication.Services
 
             return result;
         }
+
+        public async Task<Order?> FindByID(Guid orderId)
+        {
+            var result = await _orderRepository.FindById(orderId);
+
+            return result;
+        }
     }
 }

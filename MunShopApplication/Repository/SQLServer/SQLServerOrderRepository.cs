@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Azure.Core;
+using Microsoft.Data.SqlClient;
 using MunShopApplication.Entities;
 using System.Data;
 using System.Data.Common;
@@ -12,6 +13,8 @@ namespace MunShopApplication.Repository.SQLServer
         private const string CANCEL_ORDER_COMMAND = "UPDATE orderS SET is_canceled = 1 WHERE id = @OrderId";
         private const string SELECT = "SELECT";
         private const string IS_EXISTED_ORDER_QUERY = " id FROM orders WHERE id = @OrderId";
+        private const string FIND_BY_ID_QUERY = " id, user_id, total, created_at FROM orders WHERE id = @OrderId AND is_canceled = 0";
+        private const string FIND_ITEMS_QUERY = " id, product_id, price, quantity FROM orderItems WHERE order_id = @OrderId";
 
         private readonly SqlConnection _connection;
         public SQLServerOrderRepository(SqlConnection connection)
@@ -126,5 +129,60 @@ namespace MunShopApplication.Repository.SQLServer
                 _connection.Close();
             }
         }
+
+        public async Task<Order?> FindById(Guid orderId)
+        {
+            try
+            {
+                await _connection.OpenAsync();
+
+                var cmd = _connection.CreateCommand();
+                cmd.CommandText = SELECT + FIND_BY_ID_QUERY;
+
+                cmd.Parameters.Add(new SqlParameter("@OrderId", SqlDbType.UniqueIdentifier)).Value = orderId;
+
+                var reader = await cmd.ExecuteReaderAsync();
+                var order = new Order();
+
+                if (order != null && reader.Read())
+                {
+                    order.Id = reader.GetGuid(0);
+                    order.UserId = reader.GetGuid(1);
+                    order.Total = (float) reader.GetDouble(2);
+                    order.CreatedAt = reader.GetDateTime(3);
+                    reader.Close();
+
+                    cmd.CommandText = SELECT + FIND_ITEMS_QUERY;
+                    reader = await cmd.ExecuteReaderAsync();
+                    var items = new List<OrderItem>();
+
+                    while (reader != null && reader.Read())
+                    {
+                        var item = new OrderItem()
+                        {
+                            Id = reader.GetGuid(0),
+                            ProductId = reader.GetGuid(1),
+                            Price = (float)reader.GetDouble(2),
+                            Quantity = reader.GetInt32(3),
+                        };
+
+                        items.Add(item);
+                    }
+
+                    order.Items = items;    
+                }
+
+                return order;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                _connection.Close();
+            }
+        }
+
     }
 }

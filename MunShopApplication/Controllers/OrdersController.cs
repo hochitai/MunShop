@@ -43,5 +43,17 @@ namespace MunShopApplication.Controllers
             return NoContent();
         }
 
+        [HttpGet("{orderId}")]
+        public async Task<IActionResult> FindById([FromRoute] Guid orderId)
+        {
+            var result = await _orderService.FindByID(orderId);
+
+            if (result == null)
+            {
+                return BadRequest("Can not get order");
+            }
+
+            return Ok(result);
+        }
     }
 }
