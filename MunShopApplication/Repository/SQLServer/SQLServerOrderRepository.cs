@@ -188,7 +188,7 @@ namespace MunShopApplication.Repository.SQLServer
             }
         }
 
-        public async Task<List<Order>?> Find(PageCreterias creterias)
+        public async Task<List<Order>?> Find(OrderFindCreterias creterias)
         {
             try
             {
@@ -200,9 +200,23 @@ namespace MunShopApplication.Repository.SQLServer
 
                 sql.Append(FIND_ALL);
 
-                if (creterias.Skip > 0)
+                if (creterias.BeginDate != DateTime.MinValue)
                 {
-                    sql.Append(" ORDER BY created_at DESC");
+                    sql.Append(" AND created_at >= ");
+                    sql.Append($"'{creterias.BeginDate.ToString("yyyy - MM - dd HH: mm:ss.fff")}'");
+                    sql.Append(" ");
+                }
+
+                if (creterias.EndDate != DateTime.MinValue)
+                {
+                    sql.Append(" AND created_at <= ");
+                    sql.Append($"'{creterias.EndDate.ToString("yyyy - MM - dd HH: mm:ss.fff")}'");
+                    sql.Append(" ");
+                }
+
+                if (creterias.Skip >= 0)
+                {
+                    sql.Append("ORDER BY created_at DESC");
                     sql.Append(" OFFSET ");
                     sql.Append(creterias.Skip);
                     sql.Append(" ROWS");
@@ -211,7 +225,7 @@ namespace MunShopApplication.Repository.SQLServer
                 if (creterias.Take > 0)
                 {
                     sql.Append(" FETCH NEXT ");
-                    sql.Append(creterias.Take);
+                    sql.Append("creterias.Take");
                     sql.Append(" ROW ONLY");
                 }
 
