@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using MunShopApplication.Entities;
 using MunShopApplication.Services;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection.Metadata;
 
 namespace MunShopApplication.Controllers
 {
@@ -17,9 +19,15 @@ namespace MunShopApplication.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> Find(
+            [FromQuery] int skip,
+            [FromQuery] int take,
+            [FromQuery(Name = "min-price")] float minPrice,
+            [FromQuery(Name = "max-price")] float maxPrice,
+            [FromQuery] string? name,
+            [FromQuery(Name = "category_id")] Guid categoryId)
         {
-            var result = await _productService.GetAll();
+            var result = await _productService.Find(skip, take, minPrice, maxPrice, name, categoryId);
 
             if (result == null)
             {

@@ -58,7 +58,10 @@ namespace MunShopApplication.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Find([FromQuery] int skip, [FromQuery] int take, DateTime beginDate, DateTime endDate)
+        public async Task<IActionResult> Find([FromQuery] int skip, 
+            [FromQuery] int take,
+            [FromQuery(Name = "begin_date")] DateTime beginDate,
+            [FromQuery(Name = "end_date")] DateTime endDate)
         {
 
             var result = await _orderService.Find(skip, take, beginDate, endDate);

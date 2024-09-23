@@ -225,7 +225,7 @@ namespace MunShopApplication.Repository.SQLServer
                 if (creterias.Take > 0)
                 {
                     sql.Append(" FETCH NEXT ");
-                    sql.Append("creterias.Take");
+                    sql.Append(creterias.Take);
                     sql.Append(" ROW ONLY");
                 }
 
