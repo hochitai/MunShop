@@ -31,6 +31,19 @@ namespace MunShopApplication.Controllers
             return Ok(result);
         }
 
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] Order order)
+        {
+            var result = await _orderService.Update(order);
+
+            if (result == null)
+            {
+                return BadRequest("Can not update order");
+            }
+
+            return Ok(result);
+        }
+
         [HttpPatch("{orderId}")]
         public async Task<IActionResult> Cancel([FromRoute] Guid orderId)
         {

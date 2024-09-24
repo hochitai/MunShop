@@ -7,10 +7,12 @@ namespace MunShopApplication.Services
     public class OrderService
     {
         private readonly SQLServerOrderRepository _orderRepository;
+        private readonly SQLServerProductRepository _productRepository;
 
-        public OrderService(SQLServerOrderRepository orderRepository)
+        public OrderService(SQLServerOrderRepository orderRepository, SQLServerProductRepository productRepository)
         {
             _orderRepository = orderRepository;
+            _productRepository = productRepository;
         }
 
         public async Task<Order?> Add(Order order)
@@ -26,6 +28,27 @@ namespace MunShopApplication.Services
 
             return result;
         }
+
+        public async Task<Order?> Update(Order order)
+        {
+            if (!await _orderRepository.isExistedOrder(order.Id))
+            {
+                return null;
+            }
+
+            foreach (var item in order.Items)
+            {
+                if (!await _productRepository.FindById(item.ProductId))
+                {
+                    return null;
+                }
+            }
+
+            var result = await _orderRepository.Update(order);
+
+            return result;
+        }
+
         public async Task<bool> Cancel(Guid orderId)
         {
             if (! await _orderRepository.isExistedOrder(orderId))

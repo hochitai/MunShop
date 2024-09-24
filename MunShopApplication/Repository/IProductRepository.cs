@@ -8,6 +8,7 @@ namespace MunShopApplication.Repository
         Task<Product?> Update(Product product);
         Task<bool> Delete(Guid productId);
         Task<List<Product>?> GetAll();
-        Task<Product?> FindById(Guid productId);
+        Task<bool> FindById(Guid productId);
+        Task<List<Product>?> Find(ProductFindCreterias creterias);
     }
 }

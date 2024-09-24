@@ -13,6 +13,8 @@ namespace MunShopApplication.Repository.SQLServer
     {
         private const string INSERT_COMMAND = "INSERT INTO orders(Id,user_id, total) VALUES (@OrderId, @UserId, @Total)";
         private const string INSERT_ITEM_COMMAND = "INSERT INTO orderItems(id, order_id, product_id, price, quantity) VALUES (@OrderItemId, @OrderId, @ProductId, @Price, @Quantity)";
+        private const string UPDATE_COMMAND = "UPDATE orders SET user_id = @UserId, total = @Total WHERE id = @OrderId";
+        private const string UPDATE_ITEM_COMMAND = "UPDATE orderItems SET price = @Price, quantity = @Quantity WHERE id = @OrderItemId AND order_id = @OrderId AND product_id = @ProductId";
         private const string CANCEL_ORDER_COMMAND = "UPDATE orderS SET is_canceled = 1 WHERE id = @OrderId";
         private const string SELECT = "SELECT ";
         private const string IS_EXISTED_ORDER_QUERY = "id FROM orders WHERE id = @OrderId";
@@ -88,6 +90,71 @@ namespace MunShopApplication.Repository.SQLServer
                 _connection.Close();
             }
         }
+
+        public async Task<Order?> Update(Order order)
+        {
+            SqlTransaction? transaction = null;
+            try
+            {
+                await _connection.OpenAsync();
+                transaction = _connection.BeginTransaction();
+
+                var cmd = _connection.CreateCommand();
+                cmd.CommandText = UPDATE_COMMAND;
+                cmd.Transaction = transaction;
+
+                cmd.Parameters.Add(new SqlParameter("@OrderId", SqlDbType.UniqueIdentifier)).Value = order.Id;
+                cmd.Parameters.Add(new SqlParameter("@UserId", SqlDbType.UniqueIdentifier)).Value = order.UserId;
+                cmd.Parameters.Add(new SqlParameter("@Total", SqlDbType.Float)).Value = order.Total;
+
+                if (await cmd.ExecuteNonQueryAsync() > 0)
+                {
+                    cmd.CommandText = UPDATE_ITEM_COMMAND;
+                    cmd.Parameters.Clear();
+
+                    cmd.Parameters.Add(new SqlParameter("@OrderItemId", SqlDbType.UniqueIdentifier));
+                    cmd.Parameters.Add(new SqlParameter("@ProductId", SqlDbType.UniqueIdentifier));
+                    cmd.Parameters.Add(new SqlParameter("@Price", SqlDbType.Float));
+                    cmd.Parameters.Add(new SqlParameter("@Quantity", SqlDbType.Int));
+
+                    cmd.Parameters.Add(new SqlParameter("@OrderId", SqlDbType.UniqueIdentifier)).Value = order.Id;
+
+                    foreach (var item in order.Items)
+                    {
+                        cmd.Parameters["@OrderItemId"].Value = item.Id;
+                        cmd.Parameters["@ProductId"].Value = item.ProductId;
+                        cmd.Parameters["@Price"].Value = item.Price;
+                        cmd.Parameters["@Quantity"].Value = item.Quantity;
+
+                        if (await cmd.ExecuteNonQueryAsync() == 0)
+                        {
+                            throw new Exception("Error updating OrderItems");
+                        }
+                    }
+
+                    await transaction.CommitAsync();
+
+                    return order;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                if (transaction != null)
+                {
+                    await transaction.CommitAsync();
+                }
+                return null;
+            }
+            finally
+            {
+                _connection.Close();
+            }
+        }
+
         public async Task<bool> Cancel(Guid orderId)
         {
             try
