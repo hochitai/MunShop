@@ -40,6 +40,7 @@ CREATE TABLE products (
   [name] nvarchar(255) NOT NULL,
   [price] float NOT NULL,
   [description] nvarchar(255) NOT NULL,
+  [image] nvarchar(255),
   [category_id] UNIQUEIDENTIFIER,
   [created_at] DATETIME2(3) CONSTRAINT DF_Products_Created DEFAULT (SYSDATETIME()),
   [updated_at] DATETIME2(3)
