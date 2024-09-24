@@ -9,20 +9,20 @@ namespace MunShopApplication.Repository.SQLServer
 {
     public class SQLServerProductRepository : IProductRepository
     {
-        private const string INSERT_COMMAND = "INSERT INTO products(id, name, price, description, category_id) VALUES (@ProductId, @Name, @Price, @Description, @CategoryId)";
-        private const string UPDATE_COMMAND = "UPDATE products SET name = @Name, price = @Price, description = @Description, category_id = @CategoryId WHERE Id = @ProductId";
+        private const string INSERT_COMMAND = "INSERT INTO products(id, name, price, description, image, category_id) VALUES (@ProductId, @Name, @Price, @Description, @Image, @CategoryId)";
+        private const string UPDATE_COMMAND = "UPDATE products SET name = @Name, price = @Price, description = @Description, image = @Image, category_id = @CategoryId WHERE Id = @ProductId";
         private const string SELECT = "SELECT ";
-        private const string FIND_ALL = "id, name, price, description, category_id FROM products WHERE (1=1)";
+        private const string FIND_ALL = "id, name, price, description, image, category_id FROM products WHERE (1=1)";
         private const string FIND_BY_ID_QUERY = "SELECT id FROM products WHERE id = @ProductId";
         private const string DELETE_BY_ID = "DELETE FROM products WHERE Id = @ProductId";
 
         private readonly SqlConnection _connection;
-        
+
         public SQLServerProductRepository(SqlConnection connection)
         {
             _connection = connection;
         }
-        
+
         public async Task<Product?> Add(Product product)
         {
             try
@@ -36,6 +36,7 @@ namespace MunShopApplication.Repository.SQLServer
                 cmd.Parameters.Add(new SqlParameter("@Name", SqlDbType.NVarChar, 255)).Value = product.Name;
                 cmd.Parameters.Add(new SqlParameter("@Price", SqlDbType.Float)).Value = product.Price;
                 cmd.Parameters.Add(new SqlParameter("@Description", SqlDbType.NVarChar, 255)).Value = product.Description;
+                cmd.Parameters.Add(new SqlParameter("@Image", SqlDbType.NVarChar, 255)).Value = product.Image;
                 cmd.Parameters.Add(new SqlParameter("@CategoryId", SqlDbType.UniqueIdentifier)).Value = product.CategoryId;
 
                 if (await cmd.ExecuteNonQueryAsync() < 0)
@@ -48,8 +49,8 @@ namespace MunShopApplication.Repository.SQLServer
             {
                 return null;
             }
-            finally 
-            { 
+            finally
+            {
                 _connection.Close();
             }
         }
@@ -66,8 +67,9 @@ namespace MunShopApplication.Repository.SQLServer
                 cmd.Parameters.Add(new SqlParameter("@Name", SqlDbType.NVarChar, 255)).Value = product.Name;
                 cmd.Parameters.Add(new SqlParameter("@Price", SqlDbType.Float)).Value = product.Price;
                 cmd.Parameters.Add(new SqlParameter("@Description", SqlDbType.NVarChar, 255)).Value = product.Description;
+                cmd.Parameters.Add(new SqlParameter("@Image", SqlDbType.NVarChar, 255)).Value = product.Image;
                 cmd.Parameters.Add(new SqlParameter("@CategoryId", SqlDbType.UniqueIdentifier)).Value = product.CategoryId;
-                
+
                 cmd.Parameters.Add(new SqlParameter("@ProductId", SqlDbType.UniqueIdentifier)).Value = product.Id;
 
                 if (await cmd.ExecuteNonQueryAsync() < 0)
@@ -133,9 +135,10 @@ namespace MunShopApplication.Repository.SQLServer
                         {
                             Id = reader.GetGuid(0),
                             Name = reader.GetString(1),
-                            Price = (float) reader.GetDouble(2),
+                            Price = (float)reader.GetDouble(2),
                             Description = reader.GetString(3),
-                            CategoryId = reader.GetGuid(4),
+                            Image = reader.GetString(4),
+                            CategoryId = reader.GetGuid(5),
                         });
 
                     }
@@ -241,7 +244,8 @@ namespace MunShopApplication.Repository.SQLServer
                         Name = reader.GetString(1),
                         Price = (float)reader.GetDouble(2),
                         Description = reader.GetString(3),
-                        CategoryId = reader.GetGuid(4),
+                        Image = reader.GetString(4),
+                        CategoryId = reader.GetGuid(5),
                     });
                 }
                 return products;
