@@ -45,9 +45,7 @@ namespace MunShopApplication.Services
         }
         public async Task<bool> Delete(Guid productId)
         {
-            var productInDb = await _productRepository.FindById(productId);
-
-            if (productInDb == null)
+            if (!await _productRepository.FindById(productId))
             {
                 return false;
             }

@@ -13,7 +13,7 @@ namespace MunShopApplication.Repository.SQLServer
         private const string UPDATE_COMMAND = "UPDATE products SET name = @Name, price = @Price, description = @Description, category_id = @CategoryId WHERE Id = @ProductId";
         private const string SELECT = "SELECT ";
         private const string FIND_ALL = "id, name, price, description, category_id FROM products WHERE (1=1)";
-        private const string FIND_BY_ID_QUERY = "SELECT id, name, price, description, category_id FROM products WHERE id = @ProductId";
+        private const string FIND_BY_ID_QUERY = "SELECT id FROM products WHERE id = @ProductId";
         private const string DELETE_BY_ID = "DELETE FROM products WHERE Id = @ProductId";
 
         private readonly SqlConnection _connection;
@@ -152,7 +152,7 @@ namespace MunShopApplication.Repository.SQLServer
             }
         }
 
-        public async Task<Product?> FindById(Guid productId)
+        public async Task<bool> FindById(Guid productId)
         {
             try
             {
@@ -163,28 +163,11 @@ namespace MunShopApplication.Repository.SQLServer
 
                 cmd.Parameters.Add(new SqlParameter("@productId", SqlDbType.UniqueIdentifier)).Value = productId;
 
-                using var reader = await cmd.ExecuteReaderAsync();
-
-                if (reader != null )
-                {
-                    reader.Read();
-                    return new Product()
-                    {
-                        Id = reader.GetGuid(0),
-                        Name = reader.GetString(1),
-                        Price = (float) reader.GetDouble(2),
-                        Description = reader.GetString(3),
-                        CategoryId = reader.GetGuid(4),
-                    };
-                }
-                else
-                {
-                    return null;
-                }
+                return await cmd.ExecuteScalarAsync() != null;
             }
             catch
             {
-                return null;
+                return false;
             }
             finally
             {
