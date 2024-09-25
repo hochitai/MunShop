@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MunShopApplication.Entities;
 using MunShopApplication.Services;
@@ -18,6 +19,7 @@ namespace MunShopApplication.Controllers
             _productService = productService;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> Find(
             [FromQuery] int skip,
@@ -36,6 +38,7 @@ namespace MunShopApplication.Controllers
             return Ok(result);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] Product product)
         {
@@ -47,6 +50,7 @@ namespace MunShopApplication.Controllers
             return Ok(result);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPut("{productId}")]
         public async Task<IActionResult> Update([FromRoute] Guid productId, [FromBody] Product product)
         {
@@ -59,6 +63,7 @@ namespace MunShopApplication.Controllers
             return Ok(result);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpDelete("{productId}")]
         public async Task<IActionResult> Delete([FromRoute] Guid productId)
         {

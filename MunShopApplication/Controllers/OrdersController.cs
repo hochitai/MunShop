@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using MunShopApplication.Entities;
@@ -18,6 +19,7 @@ namespace MunShopApplication.Controllers
             _orderService = orderService;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] Order order)
         {
@@ -31,6 +33,7 @@ namespace MunShopApplication.Controllers
             return Ok(result);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] Order order)
         {
@@ -44,6 +47,7 @@ namespace MunShopApplication.Controllers
             return Ok(result);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPatch("{orderId}")]
         public async Task<IActionResult> Cancel([FromRoute] Guid orderId)
         {
@@ -57,6 +61,7 @@ namespace MunShopApplication.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpGet("{orderId}")]
         public async Task<IActionResult> FindById([FromRoute] Guid orderId)
         {
@@ -70,6 +75,7 @@ namespace MunShopApplication.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> Find([FromQuery] int skip, 
             [FromQuery] int take,

@@ -8,6 +8,8 @@ using MunShopApplication.Repository.SQLServer;
 using MunShopApplication.Services;
 using MunShopApplication.Configs;
 using System.Text;
+using System.Security.Claims;
+using MunShopApplication.Commons;
 
 namespace MunShopApplication
 {
@@ -18,7 +20,13 @@ namespace MunShopApplication
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddTransient<SqlConnection>(sp =>
+
+            //bind object model from configuration
+            JWTConfig jwtConfig = builder.Configuration.GetSection("jwt").Get<JWTConfig>();
+            //add it to services
+            builder.Services.AddSingleton(jwtConfig);
+
+            builder.Services.AddScoped<SqlConnection>(sp =>
             {
                 var connectionString = builder.Configuration.GetConnectionString("ShopDatabase");
                 return new SqlConnection(connectionString);
@@ -66,12 +74,11 @@ namespace MunShopApplication
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
                 };
             });
-
-            //bind object model from configuration
-            JWTConfig jwtConfig = builder.Configuration.GetSection("jwt").Get<JWTConfig>();
-
-            //add it to services
-            builder.Services.AddSingleton(jwtConfig);
+            
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin", p => p.RequireClaim(ClaimTypes.Role, ((int) RoleEnum.Admin).ToString()));
+            });
 
             builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
@@ -88,9 +95,8 @@ namespace MunShopApplication
             // Configure the HTTP request pipeline.
 
             app.UseHttpsRedirection();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
 
             app.MapControllers();
 
