@@ -7,7 +7,6 @@
         public string Description { get; set; }
         public float Price { get; set; }
         public string Image { get; set; } = string.Empty;
-
         public Guid CategoryId  { get; set; }
         public DateTime? CreatedAt { get; set; } = null;
         public DateTime? LastUpdatedAt { get; set; } = null;

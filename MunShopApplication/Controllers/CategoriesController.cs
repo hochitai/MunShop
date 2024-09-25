@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MunShopApplication.Entities;
 using MunShopApplication.Services;
@@ -28,6 +29,7 @@ namespace MunShopApplication.Controllers
             return Ok(result);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] Category category)
         {
@@ -38,6 +40,7 @@ namespace MunShopApplication.Controllers
             return Ok(result);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPut("{categoryId}")]
         public async Task<IActionResult> Update([FromRoute] Guid categoryId, [FromBody] Category category)
         {
@@ -50,6 +53,7 @@ namespace MunShopApplication.Controllers
             return Ok(result);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpDelete("{categoryId}")]
         public async Task<IActionResult> Delete([FromRoute] Guid categoryId)
         {

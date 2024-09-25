@@ -3,36 +3,56 @@
   "WorkspaceRootPath": "D:\\Workspace\\C#\\MunShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\repository\\sqlserver\\sqlserverproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\repository\\sqlserver\\sqlserverproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\entities\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\entities\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\repository\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\repository\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\entities\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\entities\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\repository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\repository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\repository\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\repository\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\repository\\orderfindcreterias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\repository\\orderfindcreterias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\repository\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\repository\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\helpers\\tokenhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\helpers\\tokenhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|d:\\workspace\\c#\\munshop\\munshopapplication\\repository\\sqlserver\\sqlserverproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DF9963D-BFCA-4200-864F-DB05AA69D21C}|MunShopApplication\\MunShopApplication.csproj|solutionrelative:munshopapplication\\repository\\sqlserver\\sqlserverproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,106 +70,171 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "OrderFindCreterias.cs",
-              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Repository\\OrderFindCreterias.cs",
-              "RelativeDocumentMoniker": "MunShopApplication\\Repository\\OrderFindCreterias.cs",
-              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Repository\\OrderFindCreterias.cs",
-              "RelativeToolTip": "MunShopApplication\\Repository\\OrderFindCreterias.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T17:39:44.902Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IUserRepository.cs",
-              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Repository\\IUserRepository.cs",
-              "RelativeDocumentMoniker": "MunShopApplication\\Repository\\IUserRepository.cs",
-              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Repository\\IUserRepository.cs",
-              "RelativeToolTip": "MunShopApplication\\Repository\\IUserRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T17:39:44.326Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ICategoryRepository.cs",
-              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Repository\\ICategoryRepository.cs",
-              "RelativeDocumentMoniker": "MunShopApplication\\Repository\\ICategoryRepository.cs",
-              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Repository\\ICategoryRepository.cs",
-              "RelativeToolTip": "MunShopApplication\\Repository\\ICategoryRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T17:39:43.073Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IOrderRepository.cs",
-              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Repository\\IOrderRepository.cs",
-              "RelativeDocumentMoniker": "MunShopApplication\\Repository\\IOrderRepository.cs",
-              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Repository\\IOrderRepository.cs",
-              "RelativeToolTip": "MunShopApplication\\Repository\\IOrderRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T17:39:40.872Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IProductRepository.cs",
-              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Repository\\IProductRepository.cs",
-              "RelativeDocumentMoniker": "MunShopApplication\\Repository\\IProductRepository.cs",
-              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Repository\\IProductRepository.cs",
-              "RelativeToolTip": "MunShopApplication\\Repository\\IProductRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T17:39:09.52Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SQLServerProductRepository.cs",
-              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Repository\\SQLServer\\SQLServerProductRepository.cs",
-              "RelativeDocumentMoniker": "MunShopApplication\\Repository\\SQLServer\\SQLServerProductRepository.cs",
-              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Repository\\SQLServer\\SQLServerProductRepository.cs",
-              "RelativeToolTip": "MunShopApplication\\Repository\\SQLServer\\SQLServerProductRepository.cs",
-              "ViewState": "AQIAAO0AAAAAAAAAAAAswP0AAAANAAAA",
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Entities\\Order.cs",
+              "RelativeDocumentMoniker": "MunShopApplication\\Entities\\Order.cs",
+              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Entities\\Order.cs",
+              "RelativeToolTip": "MunShopApplication\\Entities\\Order.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T17:21:43.919Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProductsController.cs",
-              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Controllers\\ProductsController.cs",
-              "RelativeDocumentMoniker": "MunShopApplication\\Controllers\\ProductsController.cs",
-              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Controllers\\ProductsController.cs",
-              "RelativeToolTip": "MunShopApplication\\Controllers\\ProductsController.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAgwB0AAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T17:19:34.28Z",
+              "WhenOpened": "2024-09-25T08:16:37.306Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Entities\\Category.cs",
+              "RelativeDocumentMoniker": "MunShopApplication\\Entities\\Category.cs",
+              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Entities\\Category.cs",
+              "RelativeToolTip": "MunShopApplication\\Entities\\Category.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T08:16:36.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrderItem.cs",
+              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Entities\\OrderItem.cs",
+              "RelativeDocumentMoniker": "MunShopApplication\\Entities\\OrderItem.cs",
+              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Entities\\OrderItem.cs",
+              "RelativeToolTip": "MunShopApplication\\Entities\\OrderItem.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T08:16:33.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Product.cs",
               "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Entities\\Product.cs",
               "RelativeDocumentMoniker": "MunShopApplication\\Entities\\Product.cs",
               "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Entities\\Product.cs",
               "RelativeToolTip": "MunShopApplication\\Entities\\Product.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T17:18:15.816Z",
+              "WhenOpened": "2024-09-25T08:16:24.116Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "MunShopApplication\\Entities\\User.cs",
+              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Entities\\User.cs",
+              "RelativeToolTip": "MunShopApplication\\Entities\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T08:16:08.15Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Role.cs",
+              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Entities\\Role.cs",
+              "RelativeDocumentMoniker": "MunShopApplication\\Entities\\Role.cs",
+              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Entities\\Role.cs",
+              "RelativeToolTip": "MunShopApplication\\Entities\\Role.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T08:16:05.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "SQLServerProductRepository.cs",
+              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Repository\\SQLServer\\SQLServerProductRepository.cs",
+              "RelativeDocumentMoniker": "MunShopApplication\\Repository\\SQLServer\\SQLServerProductRepository.cs",
+              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Repository\\SQLServer\\SQLServerProductRepository.cs",
+              "RelativeToolTip": "MunShopApplication\\Repository\\SQLServer\\SQLServerProductRepository.cs",
+              "ViewState": "AQIAAFsAAAAAAAAAAAAkwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T07:55:17.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "MunShopApplication\\Controllers\\UsersController.cs",
+              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "MunShopApplication\\Controllers\\UsersController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T07:31:53.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "MunShopApplication\\Controllers\\ProductsController.cs",
+              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "MunShopApplication\\Controllers\\ProductsController.cs",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAowCsAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T07:31:25.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "MunShopApplication\\Controllers\\OrdersController.cs",
+              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "MunShopApplication\\Controllers\\OrdersController.cs",
+              "ViewState": "AQIAAEwAAAAAAAAAAAAowDEAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T07:30:28.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "MunShopApplication\\Controllers\\CategoriesController.cs",
+              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "MunShopApplication\\Controllers\\CategoriesController.cs",
+              "ViewState": "AQIAADcAAAAAAAAAAAAkwBIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T07:28:44.757Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Program.cs",
+              "RelativeDocumentMoniker": "MunShopApplication\\Program.cs",
+              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Program.cs",
+              "RelativeToolTip": "MunShopApplication\\Program.cs",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAQwE8AAAB0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T07:23:24.797Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TokenHelper.cs",
+              "DocumentMoniker": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Helpers\\TokenHelper.cs",
+              "RelativeDocumentMoniker": "MunShopApplication\\Helpers\\TokenHelper.cs",
+              "ToolTip": "D:\\Workspace\\C#\\MunShop\\MunShopApplication\\Helpers\\TokenHelper.cs",
+              "RelativeToolTip": "MunShopApplication\\Helpers\\TokenHelper.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAlwBkAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T07:20:52.467Z",
               "EditorCaption": ""
             }
           ]

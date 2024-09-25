@@ -7,6 +7,7 @@ using System.Configuration;
 using MunShopApplication.Configs;
 using Microsoft.AspNetCore.Mvc;
 using MunShopApplication.Entities;
+using MunShopApplication.DTOs;
 
 namespace DirectoryPermissionManagement.Helpers
 {
@@ -18,7 +19,8 @@ namespace DirectoryPermissionManagement.Helpers
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier,user.Name),
+                new Claim(ClaimTypes.NameIdentifier, user.Name),
+                new Claim(ClaimTypes.Role, user.RoleId.ToString()),
                 new Claim("id", user.Id.ToString())
             };
             var token = new JwtSecurityToken(config.Issuer,
